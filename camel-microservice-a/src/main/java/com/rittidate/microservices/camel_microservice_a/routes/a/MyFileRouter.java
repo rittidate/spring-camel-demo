@@ -19,7 +19,14 @@ public class MyFileRouter extends RouteBuilder {
             .otherwise()
                 .log("Not an XML FILE")
         .end()
-        .log("${messageHistory} ${headers.CamelFileAbsolute}")
+        .to("direct:log-file-values")
         .to("file:files/output");
+
+        from("direct:log-file-values")
+        .log("${messageHistory} ${headers.CamelFileAbsolute}")
+        .log("${file:name} ${file:name.ext} ${file:name.noext} ${file:onlyname}")
+        .log("${file:onlyname.noext} ${file:parent} ${file:path} ${file:absolute}")
+        .log("${file:size} ${file:modified}")
+        .log("${routeId} ${camelId} ${body}");
     }
 }
