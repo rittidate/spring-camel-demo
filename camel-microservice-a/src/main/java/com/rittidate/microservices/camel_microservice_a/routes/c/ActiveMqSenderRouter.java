@@ -3,7 +3,7 @@ package com.rittidate.microservices.camel_microservice_a.routes.c;
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class ActiveMqSenderRouter extends RouteBuilder {
     @Override
     public void configure() throws Exception {
