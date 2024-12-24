@@ -27,11 +27,11 @@ public class EipPatternSlipRouter extends RouteBuilder {
 //        .transform().constant("My Message is Hardcoded")
 //        .routingSlip(simple(routingSlip));
 
-        from("timer:dynamicRouting?period=10000")
+        from("timer:dynamicRouting?period={{timePeriod}}")
         .transform().constant("My Message is Hardcoded")
         .dynamicRouter(method(dynamicRouterBean));
 
-        from("direct:endpoint1")
+        from("{{endpoint-for-logging}}")
         .to("log:directendpoint1");
 
 
