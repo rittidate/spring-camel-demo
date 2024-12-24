@@ -19,6 +19,9 @@ public class MyFileRouter extends RouteBuilder {
 
     @Override
     public void configure() throws Exception {
+        // Pipeline pattern
+        // Content Based Pattern
+
         from("file:files/input")
         .routeId("Files-Input-Route")
         .transform().body(String.class)
